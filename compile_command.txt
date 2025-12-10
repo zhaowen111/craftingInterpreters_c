@@ -1,0 +1,1 @@
+cl *.c /Fo:build\ /Fe:build\main.exe
