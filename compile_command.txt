@@ -1,1 +1,1 @@
-cl *.c /Fo:build\ /Fe:build\main.exe
+cl /source-charset:utf-8 /execution-charset:utf-8 /W4 *.c /Fo:build\ /Fe:build\main.exe

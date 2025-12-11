@@ -3,21 +3,25 @@
 
 #include "common.h"
 #include "memory.h"
+#include "value.h"
 
 typedef enum
 {
     OP_RETURN,
+    OP_CONSTANT,
 } OpCode;
 
 typedef struct
 {
-    // 新增部分开始
     int count;
     int capacity;
-    // 新增部分结束
     uint8_t *code;
+    int *lines;
+    ValueArray constants;
+    bool init;
 } Chunk;
 void initChunk(Chunk *chunk);
 void freeChunk(Chunk *chunk);
-void writeChunk(Chunk *chunk, uint8_t byte);
+void writeChunk(Chunk *chunk, uint8_t byte, int line);
+int addConstant(Chunk *chunk, Value value);
 #endif
