@@ -1,11 +1,13 @@
 #ifndef clox_vm_h
 #define clox_vm_h
-
+#include "value.h"
 #include "chunk.h"
-
+#define STACK_MAX 256
 typedef struct
 {
     Chunk *chunk;
+    Value stack[STACK_MAX];
+    Value *stackTop;
     uint8_t *ip;
 } VM;
 typedef enum
@@ -14,6 +16,8 @@ typedef enum
     INTERPRET_COMPILE_ERROR,
     INTERPRET_RUNTIME_ERROR
 } InterpretResult;
+void push(Value value);
+Value pop();
 void initVM();
 void freeVM();
 InterpretResult interpret(Chunk *chunk);
